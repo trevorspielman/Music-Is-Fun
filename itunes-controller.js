@@ -17,18 +17,30 @@ function ItunesController() {
     var template = ``
     for (let i = 0; i < songList.length; i++) {
       const song = songList[i]
-      template += `<div class="m-1 p-1">
-      <img class="card-img-top" src="${song.albumArt}">
-      <div class="card-body">
-      <h4 class="card-title">${song.title}</h4>
-      <h5 class="card-title">${song.artist}</h5>
-      <p class="card-text">${song.collection}</p>
-      <p class="card-text"><strong>${song.price}</strong></p>
-      <audio controls>
-        <source src="${song.preview}"> type="audio/mpeg</a>
-        </audio>
-        </div>
-      </div>`
+/*       if (song[i] == 9) {
+        break
+        if (song[i] % 3) {
+          template += `
+          <div class="row">
+          <div class="card-deck">`
+        }
+      } */
+      template += `
+      <div class="card d-inline cardStyling m-1 p-1">
+          <img class="card-img-top albumImage" src="${song.albumArt}">
+          <div class="card-body cardText">
+              <h5 class="card-title">${song.title}</h5>
+              <h5 class="card-title">${song.artist}</h5>
+              <p class="card-text">${song.collection}</p>
+              <p class="card-text">
+                  <strong>${song.price}</strong>
+              </p>
+              <audio controls>
+                  <source src="${song.preview}"> type="audio/mpeg</a>
+              </audio>
+          </div>
+      </div>
+        `
     }
     document.getElementById('song-list').innerHTML = template
     console.log(songList)
@@ -36,10 +48,11 @@ function ItunesController() {
 
 
 
-
   //public
   this.getMusicByArtist = function getMusicByArtist(artist) {
     itunesService.getMusicByArtist(artist)
   }
+
+  
 
 }
