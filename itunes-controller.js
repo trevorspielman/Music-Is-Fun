@@ -32,8 +32,8 @@ function ItunesController() {
               <h5 class="card-title">${song.title}</h5>
               <h5 class="card-title">${song.artist}</h5>
               <p class="card-text">${song.collection}</p>
-              <p class="card-text">
-                  <strong>${song.price}</strong>
+              <p class="card-text strong">
+                  <strong>$${song.price}</strong>
               </p>
               <audio controls>
                   <source src="${song.preview}"> type="audio/mpeg</a>

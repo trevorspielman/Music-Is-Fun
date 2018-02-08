@@ -12,22 +12,24 @@
 </head>
 
 <body class="body">
-    <form class="form-inline fixed-top" onsubmit="app.controllers.itunesCtrl.getMusic(event)">
-        <!--DO NOT MODIFY THE ID OR ONCLICK ATTRIBUTES IN THIS FORM-->
-        <div class="form-group">
-            <input type="text" class="form-control" name="artist" placeholder="Artist Name" />
-            <button type="submit" class="btn btn-primary" id="get-music-button">Get Music</button>
-        </div>
-    </form>
     <div class="container-fluid">
-        <div class="row header">
-            <div class="col">
-                <h1>Love Music? Find it Here!</h1>
+        <div class="row">
+                <div class="col-sm-12 header">
+                        <h1>Love Music? Find it Here!</h1>
+                    </div>
+            <div class="col-sm-12">
+                <form class="form-inline fixed-top m-2" onsubmit="app.controllers.itunesCtrl.getMusic(event)">
+                    <!--DO NOT MODIFY THE ID OR ONCLICK ATTRIBUTES IN THIS FORM-->
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="artist" placeholder="Artist Name" />
+                        <button type="submit" class="btn btn-primary" id="get-music-button">Get Music</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row justify-content-between m-2" id="song-list">
+        <div class="row justify-content-around m-2" id="song-list">
 
         </div>
     </div>
