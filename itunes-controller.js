@@ -17,25 +17,17 @@ function ItunesController() {
     var template = ``
     for (let i = 0; i < songList.length; i++) {
       const song = songList[i]
-/*       if (song[i] == 9) {
-        break
-        if (song[i] % 3) {
-          template += `
-          <div class="row">
-          <div class="card-deck">`
-        }
-      } */
       template += `
       <div class="card d-inline cardStyling m-1 p-1">
           <img class="card-img-top albumImage" src="${song.albumArt}">
           <div class="card-body cardText">
-              <h5 class="card-title">${song.title}</h5>
+              <h5 class="card-title" onclick="function(pausePlayback)">${song.title}</h5>
               <h5 class="card-title">${song.artist}</h5>
               <p class="card-text">${song.collection}</p>
               <p class="card-text strong">
                   <strong>$${song.price}</strong>
               </p>
-              <audio controls>
+              <audio controls class="players">
                   <source src="${song.preview}"> type="audio/mpeg</a>
               </audio>
           </div>
@@ -43,16 +35,13 @@ function ItunesController() {
         `
     }
     document.getElementById('song-list').innerHTML = template
-    console.log(songList)
+    document.addEventListener('play', function (pausePlayback) { // event listener to identify the active player.
+      var player = document.getElementsByClassName('players') //aliasing the players class
+      for (let i = 0; i < player.length; i++) { //sorting through all players
+        if (player[i] != pausePlayback.target) { //identifying if the player isn't the current one active
+          player[i].pause() //if it isn't then the current one active is paused.
+        }
+      }
+    }, true)
   }
-
-
-
-  //public
-  this.getMusicByArtist = function getMusicByArtist(artist) {
-    itunesService.getMusicByArtist(artist)
-  }
-
-  
-
 }
